@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>HTML & CSS Cheat Sheet</title>
+    <link rel="stylesheet" href="style-1.css">
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <h1>HTML & CSS Cheat Sheet</h1>
+        <p>A simple page to learn and revise HTML & CSS 🚀</p>
+        <ul class="nav">
+            <h3>
+             <li><a href="#html">HTML</a></li>
+             <li><a href="#css">CSS</a></li>
+             <li><a href="#fun">Fun</a></li>
+            </h3>
+        </ul>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+
+        <!-- HTML SECTION -->
+        <section id="html">
+            <h2>HTML Basics</h2>
+
+            <!-- HTML PART 1-->
+             <section id="html_1"> 
+              <h3>What is HTML?</h3>
+                <ol>
+                    <li>HTML stands for <strong>HyperText Markup Language.</strong></li>
+                    <li>It is the <strong>standard language </strong>for creating webpages.</li>
+                    <li>HTML uses  <strong>tags </strong>to structure content.</li>
+                    <li>It is <strong>not a programming language</strong>, but a <strong>markup language</strong>.</li>
+                </ol>
+                <p><strong>Basic Structure of an HTML Document:</strong> </p>
+                <pre><code>
+<!--            --> <&lt;!DOCTYPE html&gt;
+<!--            --> &lt;html lang="en"&gt;
+<!--            --> &lt;head&gt;
+<!--            -->     &lt;meta charset="UTF-8"&gt;
+<!--            -->     &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+<!--            -->     &lt;title&gt;Page Title&lt;/title&gt;
+<!--            --> &lt;/head&gt;
+<!--            --> &lt;body&gt;
+<!--            -->     &lt;h1&gt;Hello, World!&lt;/h1&gt;
+<!--            -->     &lt;p&gt;This is my first HTML page.&lt;/p&gt;
+<!--            --> &lt;/body&gt;
+<!--            --> &lt;/html&gt;
+                </code></pre>
+                <p><strong>Explanation:</strong> 
+                 <pre><code>&lt;!DOCTYPE html&gt; → Declares HTML5 version.</code></pre>
+                 <pre><code>&lt;html&gt; → Root element of the page.</code></pre>
+                 <pre><code>&lt;head&gt; → Contains metadata (title, links, scripts, styles).</code></pre>
+                 <pre><code>&lt;body&gt; → Contains visible content (text, images, links, etc.).</code></pre>
+                 <hr>
+                 </p>   
+             </section>
+
+             <!-- HTML PART 2-->
+             <section id="html_2">
+                <h3>HTML Elements and Tags</h3>
+                <ol>
+                    <li><strong>Element:</strong>Everything from opening tag to closing tag.</li>
+                    <li><strong>Tag:</strong>The markup used to define elements.</li>
+                </ol>
+                <p><strong>Example:</strong> </p>
+                <pre><code>
+<!--            --> &lt;p&gt;This is a paragragh.&lt;/p&gt;
+                </code></pre>
+                 <ul>
+                    <li><code>&lt;p&gt; → opening tag</code></li>
+                    <li><code>&lt;/p&gt; → closing tag</code></li>
+                    <li><code>This is a paragragh → content</code></li>
+                 </ul>
+                 
+                
+
+                <p><strong>Self-closing tags:</strong> Tags that don't have closing tags. 
+                 <pre><code>&lt;img src="image.jpg" alt="Sample Image"&gt; </code>
+<!--         --><code>&lt;hr&gt;
+<!--         --><code>&lt;br&gt;    
+                 </pre>
+                 <hr>
+                 </p>   
+             </section>
+
+             <!--  HTML PART 3-->
+             <section id="html_3">
+                <h3>HTML Headings</h3>
+                <ol>
+                    <li>Headings define the<strong>importance of text.</strong></li>
+                    <li>HTML supports<strong>6 levels:</strong> &lt;h1&gt; to &lt;h6&gt;</li>
+                </ol>
+                <pre><code>
+<!--            --><code>&lt;h1&gt; Heading 1 &lt;/h1&gt; &lt;!--Largest--&gt;</code>
+<!--            --><code>&lt;h2&gt; Heading 2 &lt;/h2&gt;</code>
+<!--            --><code>&lt;h3&gt; Heading 3 &lt;/h3&gt;</code>
+<!--            --><code>&lt;h4&gt; Heading 4 &lt;/h4&gt;</code>
+<!--            --><code>&lt;h5&gt; Heading 5 &lt;/h5&gt;</code>
+<!--            --><code>&lt;h6&gt; Heading 6 &lt;/h6&gt; &lt;!--Smallest--&gt;</code>
+                </code></pre>              
+                 <hr> 
+             </section>  
+
+             <!--  HTML PART 4-->
+             <section id="html_4">
+                <h3>Paragraphs and Text Formatting</h3>
+                <ul>
+                    <li>Paragraph: <pre style="display: inline;"><code>&lt;p&gt;</code></pre></li><br>
+                    <li>Line Break: <pre style="display: inline;"><code>&lt;br&gt;</code></pre></li><br>
+                    <li>Horizontal Line: <pre style="display: inline;"><code>&lt;hr&gt;</code></pre></li>
+                </ul>
+
+                <p>
+                      Text Styles:
+                    <ul>
+                       <li>Bold: <pre style="display: inline;"><code> &lt;b&gt;</pre> or <pre style="display: inline;">&lt;strong&gt;</code></pre></li><br>
+                       <li>Italics: <pre style="display: inline;"><code>&lt;i&gt;</pre> or <pre style="display: inline;"> &lt;em&gt;</code></pre></li><br>
+                       <li>Underine: <pre style="display: inline;"><code>&lt;u&gt;</code></pre></li><br>
+                       <li>Subscript: <pre style="display: inline;"><code>&lt;sub&gt;</code></pre></li><br>
+                       <li>Superscript: <pre style="display: inline;"><code>&lt;sup&gt;</code></pre></li>
+                    </ul>
+
+                    Example:
+<!--            --><pre><code>&lt;p&gt; This is &lt;b&gt; bold &lt;/b&gt; and this is &lt;i&gt; italics &lt;/i&gt;.&lt;/p&gt;</code>
+<!--            --><code>&lt;p&gt;H&lt;sub&gt;2&lt;/sub&gt; 0 is water &lt;/p&gt;</code></pre>
+                </p>
+                <hr>
+             </section>  
+            
+             <!--  HTML PART 5-->
+             <section id="html_5">
+                <h3>Links (Hyperlinks)</h3>
+                <ul>
+                    <li>Tag: <pre style="display: inline;"><code>&lt;a&gt;</code> (anchor)</pre></li><br>
+                    <li>Attribute: <pre style="display: inline;"><code>&lt;href&gt;</code></pre> → URL of link</li><br>
+                </ul>
+
+                <p>
+                    Other attributes:
+                    <ul>
+                       <li><pre style="display: inline;"><code>&lt;target="_blank"&gt;</code></pre> → opens in new tab</li><br>
+                       <li><pre style="display: inline;"><code>&lt;i&gt; or &lt;em&gt;</code></pre>→ shows tooltip on hover</li><br>
+                    </ul>
+                </p>
+                <hr>
+             </section>
+
+            <!--  HTML PART 6-->
+             <section id="html_6">
+                <h3>Images</h3>
+                <ul>
+                    <li>Tag: <pre style="display: inline;"><code>&lt;img&gt;</code></pre></li><br>
+                    <li>Attribute:</li><br>
+                     <ul>
+                        <li><pre style="display: inline;"><code>&lt;src&gt;</code></pre>→ image URL</li><br>
+                        <li><pre style="display: inline;"><code>&lt;alt&gt;</code></pre>→ alternate text</li><br>
+                        <li><pre style="display: inline;"><code>&lt;width , height &gt;</code></pre>→ size</li><br>
+                     </ul>
+                </ul>
+                <p>
+                       <pre style="display: inline;"><code>&lt;img src="image.jpg" alt="My Image" width="200" height="150"&gt;</code></pre><br>
+                </p>
+                <hr>
+             </section> 
+
+            <!--  HTML PART 7-->
+             <section id="html_7">
+                <h3>Lists</h3>
+                <ol>
+                    <li>Ordered List  <pre style="display: inline;"><code>&lt;ol&gt;</code></pre>→ Numbers items automatically.</li><br>
+                       <p>
+                                                           <pre><code>&lt;ol&gt;
+<!--                                                       -->  &lt;li&gt; Item 1&lt;/li&gt;    
+<!--                                                       -->  &lt;li&gt; Item 2&lt;/li&gt;   
+<!--                                                       -->&lt;/ol&gt;   
+                          </code></pre><br>
+                       </p>
+                    <li>Unordered List <pre style="display: inline;"><code>&lt;ul&gt;</code></pre>→ Bullets items.</li><br>
+                     <p>
+                          <pre><code>&lt;ul&gt;
+<!--                                                       -->  &lt;li&gt; Apple&lt;/li&gt;    
+<!--                                                       -->  &lt;li&gt; Banana&lt;/li&gt;   
+<!--                                                       -->&lt;/ul&gt;   
+                          </code></pre><br>
+                       </p>             
+                     <li>Nested Lists</li><br>
+                       <p>
+                          <pre><code>&lt;ul&gt;
+<!--                                                       -->  &lt;li&gt; Fruits&lt;/li&gt;    
+<!--                                                       -->     &lt;ul&gt;
+<!--                                                       -->         &lt;li&gt; Apple&lt;/li&gt;    
+<!--                                                       -->         &lt;li&gt; Banana&lt;/li&gt;   
+<!--                                                       -->     &lt;/ul&gt;
+<!--                                                       -->  &lt;/li&gt;
+<!--                                                       -->&lt;/ul&gt;
+                          </code></pre><br> <hr>
+             </section> 
+
+             <!--  HTML PART 8-->
+             <section id="html_8">
+                <h3>Tables</h3>
+                <ul>
+                    <li>Tag: <pre style="display: inline;"><code>&lt;table&gt;</code></pre></li><br>
+                    <li>Table row: <pre style="display: inline;"><code>&lt;tr&gt;</code></pre></li><br>
+                    <li>Table header: <pre style="display: inline;"><code>&lt;th&gt;</code></pre></li><br>
+                    <li>Table data: <pre style="display: inline;"><code>&lt;td&gt;</code></pre></li><br>
+                </ul>
+
+                <p>
+                    Example:
+                    <pre><code>&lt;table border="1"&gt;
+<!--                                                       -->  &lt;tr&gt; 
+<!--                                                       -->     &lt;th&gt;Name &lt;/th&gt;
+<!--                                                       -->     &lt;th&gt;Age &lt;/th&gt;                                                            
+<!--                                                       -->  &lt;/tr&gt;   
+<!--                                                       -->  &lt;tr&gt; 
+<!--                                                       -->     &lt;td&gt;John &lt;/td&gt;
+<!--                                                       -->     &lt;td&gt;25 &lt;/td&gt;                                                            
+<!--                                                       -->  &lt;/tr&gt;
+<!--                                                       -->  &lt;tr&gt; 
+<!--                                                       -->     &lt;td&gt;Mary &lt;/td&gt;
+<!--                                                       -->     &lt;td&gt;30 &lt;/td&gt;                                                            
+<!--                                                       -->  &lt;/tr&gt; 
+<!--                                                       -->&lt;/table&gt;</code></pre></p>
+                                                     <br>  <hr>
+             </section>
+
+             <!--  HTML PART 9-->
+             <section id="html_9">
+                <h3>Forms</h3>
+                <ul>
+                    <li>Tag: <pre style="display: inline;"><code>&lt;form&gt;</code></pre></li><br>
+                    <li>Common input types: text,password,radio,checkbox,submit</li><br>
+                <p>
+                    <pre><code>&lt;form action="/submit" method="post"&gt;
+<!--                                                       --> Name: &lt;input type="text" name="name"&gt;&lt;br&gt; 
+<!--                                                       --> Gender:    
+<!--                                                       -->  &lt;input type="radio" name="gender" value="male"&gt; Male                                                            
+<!--                                                       -->  &lt;input type="radio" name="gender" value="female"&gt; Female &lt;br&gt;  
+<!--                                                       -->  &lt;input type="submit" value="Submit"&gt; 
+<!--                                                       --> &lt;/form&gt;</code></pre>
+                        Form attributes:
+                         <br><br>
+                         <ul>
+                            <li><pre style="display: inline;"><code>action</code></pre>→ URL where data is sent</li><br>
+                            <li><pre style="display: inline;"><code>method</code></pre>→ <pre style="display: inline;"><code>GET</code></pre> or <pre style="display: inline;"><code>POST</code></pre></li><br>
+                         </ul>
+                 </p>
+                 <br>
+                 <hr>
+             </section>
+
+             <!--  HTML PART 10-->
+             <section id="html_10">
+                <h3>HTML Semantic Tags</h3>
+                <ul>
+                    <li><pre style="display: inline;"><code>&lt;header&gt;</code></pre>→ top of page</li><br>
+                    <li><pre style="display: inline;"><code>&lt;footer&gt;</code></pre>→ bottom of page</li><br>
+                    <li><pre style="display: inline;"><code>&lt;nav&gt;</code></pre>→ navigation links</li><br>
+                    <li><pre style="display: inline;"><code>&lt;main&gt;</code></pre>→ main content</li><br>
+                    <li><pre style="display: inline;"><code>&lt;section&gt;</code></pre>→ section of content</li><br>
+                    <li><pre style="display: inline;"><code>&lt;article&gt;</code></pre>→ independent content</li><br>
+                    <li><pre style="display: inline;"><code>&lt;aside&gt;</code></pre>→ sidebar content</li>
+                </ul>
+                <br><hr>
+             </section>  
+
+             <!--  HTML PART 11-->
+             <section id="html_11">
+                <h3>Multimedia</h3>
+                <ol>
+                    <li>Audio</li><br>
+                       <p>
+                                                           <pre><code>&lt;audio controls&gt;
+<!--                                                       -->  &lt;li&gt; source src="audio.mp3" type="audio/mpeg"&lt;/li&gt; 
+<!--                                                       -->&lt;/audio&gt;   
+                          </code></pre><br>
+                       </p>
+                    <li>Video</li><br>
+                     <p>
+                                                                                     <pre><code>&lt;video width="320" height="240" controls&gt;
+<!--                                                       -->  &lt;li&gt; source src="video.mp4" type="video/mp4"&lt;/li&gt; 
+<!--                                                       -->&lt;/video&gt;   
+                          </code></pre><br>
+                       </p>      
+                     <hr>       
+             </section> 
+
+
+        </section>
+
+        <!-- CSS SECTION -->
+        <section id="css">
+            <h2>CSS Basics</h2>
+            <p>CSS is used to style web pages. Example:</p>
+            <pre>h1 {
+    color: blue;
+    text-align: center;
+}</pre>
+            <p>Some common properties:</p>
+            <ul>
+                <li>color → text color</li>
+                <li>background-color → background color</li>
+                <li>font-size → text size</li>
+                <li>margin / padding → spacing</li>
+                <li>border → border style</li>
+            </ul>
+            <hr>
+        </section>
+
+        <!-- FUN SECTION -->
+        <section id="fun">
+            <h2>🎉 Fun Break 🎉</h2>
+            <p>Too much studying? Feeling tired? Take a break, have some fun, and click below for an unexpected surprise that will make you smile! 🎉🚀</p>
+            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">
+                <button>Surprise Me</button>
+            </a>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2025 HTML & CSS Cheat Sheet | Made with ❤️       </p>
+    </footer>
+
+</body>
+</html>

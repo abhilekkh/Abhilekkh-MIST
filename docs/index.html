@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML & CSS Cheat Sheet</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Ensuring monospace font is prioritized */
+        body {
+            font-family: monospace, sans-serif;
+            transition: background-color 0.5s ease; /* Smooth transition for dark mode */
+        }
+
+        /* Ensuring section hover works correctly without JS */
+        .custom-section {
+            transition: background 0.9s, color 0.9s;
+            color: var(--text-color-default, #AE615F); /* Use CSS variable for dynamic color */
+        }
+        .custom-section:hover {
+            background: #FFB3A0 !important;
+            color: #AE615F !important;
+        }
+
+        /* Specific styles for HTML section background/text */
+        #html {
+            color: #fff !important; /* Forces white text on this darker background */
+        }
+        
+        /* FIX: Ensure subsection text color is dark for contrast with light subsection background */
+        /* This rule is now redundant as specific color is applied to text elements, but kept for general safety. */
+        #html .custom-subsection {
+            color: #AE615F; 
+        }
+        
+        /* Ensure table border shows up */
+        table, th, td {
+            border-collapse: collapse;
+        }
+        
+        .code-pre code {
+            display: block;
+        }
+
+        /* Styles for Back to Top button */
+        #back-to-top-btn {
+            display: none; /* Hidden by default */
+            position: fixed; /* Fixed position */
+            bottom: 20px; /* Place the button at the bottom of the page */
+            right: 30px; /* Place the button 30px from the right */
+            z-index: 99; /* Make sure it does not overlap */
+            border: none; /* Remove borders */
+            outline: none; /* Remove outline */
+            background-color: #8B4545; /* Set a background color */
+            color: white; /* Text color */
+            cursor: pointer; /* Add a mouse pointer on hover */
+            padding: 10px 15px; /* Some padding */
+            border-radius: 10px; /* Rounded corners */
+            font-size: 18px; /* Increase font size */
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        #back-to-top-btn:hover {
+            background-color: #BD1E1E; /* Darker background on hover */
+            transform: translateY(-2px); /* Slight lift on hover */
+        }
+
+        /* Dark Mode styles */
+        body.dark-mode {
+            background-color: #333 !important;
+            color: #eee !important;
+            --text-color-default: #eee; /* Update default text color for custom sections */
+        }
+        .dark-mode header, .dark-mode footer {
+            background-color: #222 !important;
+            color: #FFB3A0 !important;
+        }
+        .dark-mode h1, .dark-mode h2, .dark-mode .nav a {
+            color: #FFB3A0 !important;
+        }
+        .dark-mode .custom-section {
+            background-color: #444 !important;
+            color: #eee !important;
+        }
+        .dark-mode #html {
+             background-color: #555 !important;
+        }
+        .dark-mode #html .custom-subsection {
+            background-color: #666 !important;
+            color: #eee !important;
+        }
+        .dark-mode .text-dark-heading-text {
+            color: #FFB3A0 !important;
+        }
+        .dark-mode .code-pre {
+            background-color: #333 !important;
+        }
+        .dark-mode .code-pre code, .dark-mode .code-pre .text-code-text {
+            color: #FFCEC2 !important;
+        }
+        .dark-mode hr {
+            background-color: #777 !important;
+        }
+        .dark-mode .bg-button-bg {
+            background-color: #BD1E1E !important;
+        }
+        .dark-mode .hover\\:bg-button-hover:hover {
+            background-color: #BD1E1E !important;
+        }
+        .dark-mode .text-button-text {
+            color: #fff !important;
+        }
+
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        // Custom colors based on your CSS
+                        'page-bg': '#AE615F',
+                        'header-bg': '#8B4545',
+                        'header-text': '#ffdab8',
+                        'section-bg': '#FFCEC2',
+                        'html-section-bg': '#ce726f',
+                        'h2-color': '#BD1E1E',
+                        'button-bg': '#f7152c',
+                        'button-hover': '#990d1b',
+                        'button-text': '#F5E2C8',
+                        
+                        // --- UPDATED CODE BLOCK COLORS ---
+                        'code-bg': '#FFE3E2', // The requested background shade
+                        'code-text': '#AE615F', // The requested text color shade
+                        // ------------------------------------
+                        
+                        // NEW: Guaranteed dark color for high-contrast headings
+                        'dark-heading-text': '#8B4545', 
+                        'h3-html': '#FFCEC2', // Pale color 
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-page-bg text-page-bg m-0">
+
+    <header class="bg-header-bg text-header-text text-center p-4">
+        <h1 class="text-3xl font-extrabold">HTML & CSS Cheat Sheet</h1>
+        <p class="mt-1">A simple page to learn and revise HTML & CSS 🚀</p>
+        <nav class="mt-2 flex justify-center items-center">
+            <ul class="nav list-none p-0 flex">
+                <li class="inline-block mx-2 p-1 cursor-pointer transition duration-900 hover:text-h3-html">
+                    <a href="#html" class="text-header-text no-underline font-bold">HTML</a>
+                </li>
+                <li class="inline-block mx-2 p-1 cursor-pointer transition duration-900 hover:text-h3-html">
+                    <a href="#css" class="text-header-text no-underline font-bold">CSS</a>
+                </li>
+                <li class="inline-block mx-2 p-1 cursor-pointer transition duration-900 hover:text-h3-html">
+                    <a href="#fun" class="text-header-text no-underline font-bold">Fun</a>
+                </li>
+            </ul>
+            <button id="darkModeToggle" class="ml-4 p-2 rounded-md bg-button-bg text-button-text hover:bg-button-hover transition duration-300">
+                Toggle Dark Mode 🌙
+            </button>
+        </nav>
+    </header>
+
+    <main>
+
+        <section id="html" class="custom-section bg-html-section-bg mx-auto my-5 p-4 max-w-2xl rounded-md shadow-lg">
+            <h2 class="text-center text-h2-color pb-1 font-bold text-3xl mb-4">HTML Basics</h2>
+
+            <section id="html_1" class="custom-subsection bg-[#FFCEC2] mx-auto my-5 p-4 max-w-full rounded-md shadow-md"> 
+              <h3 class="text-dark-heading-text text-2xl mt-0 font-bold mb-3">What is HTML?</h3>
+                <ol class="list-decimal list-inside ml-4 text-[#AE615F] leading-relaxed">
+                    <li>HTML stands for <strong>HyperText Markup Language.</strong></li>
+                    <li>It is the <strong>standard language </strong>for creating webpages.</li>
+                    <li>It is <strong>not a programming language</strong>, but a <strong>markup language</strong>.</li>
+                </ol>
+                <p class="text-[#AE615F] mt-4 font-bold">Basic Structure of an HTML Document:</p>
+                <pre class="code-pre bg-code-bg text-code-text p-3 overflow-auto rounded-md whitespace-pre-wrap text-left text-sm mt-2"><code>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Page Title&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Hello, World!&lt;/h1&gt;
+    &lt;p&gt;This is my first HTML page.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+                </code></pre>
+                <p class="text-[#AE615F] mt-4 font-bold">Explanation:</p>
+                 <pre class="code-pre bg-code-bg text-code-text p-2 overflow-auto rounded-md whitespace-pre-wrap text-left text-sm mt-1"><code>&lt;!DOCTYPE html&gt; &rarr; Declares HTML5 version.</code></pre>
+                 <pre class="code-pre bg-code-bg text-code-text p-2 overflow-auto rounded-md whitespace-pre-wrap text-left text-sm mt-1"><code>&lt;html&gt; &rarr; Root element of the page.</code></pre>
+                 <pre class="code-pre bg-code-bg text-code-text p-2 overflow-auto rounded-md whitespace-pre-wrap text-left text-sm mt-1"><code>&lt;head&gt; &rarr; Contains metadata (title, links, scripts, styles).</code></pre>
+                 <pre class="code-pre bg-code-bg text-code-text p-2 overflow-auto rounded-md whitespace-pre-wrap text-left text-sm mt-1"><code>&lt;body&gt; &rarr; Contains visible content (text, images, links, etc.).</code></pre>
+                 <hr class="border-0 h-px bg-[#8B4545] w-full max-w-full mx-auto my-4" style="background-color: #8B4545;">
+             </section>
+
+             <section id="html_2" class="custom-subsection bg-[#FFCEC2] mx-auto my-5 p-4 max-w-full rounded-md shadow-md">
+                <h3 class="text-dark-heading-text text-2xl mt-0 font-bold mb-3">HTML Elements and Tags</h3>
+                <ol class="list-decimal list-inside ml-4 text-[#AE615F] leading-relaxed">
+                    <li><strong>Element:</strong> Everything from opening tag to closing tag.</li>
+                    <li><strong>Tag:</strong> The markup used to define elements.</li>
+                </ol>
+                <p class="text-[#AE615F] mt-4 font-bold">Example:</p>
+                <pre class="code-pre bg-code-bg text-code-text p-3 overflow-auto rounded-md whitespace-pre-wrap text-left text-sm mt-2"><code>
+&lt;p&gt;This is a paragraph.&lt;/p&gt;
+                </code></pre>
+                 <ul class="list-disc list-inside ml-4 text-[#AE615F] mt-2">
+                    <li><code class="font-mono text-code-text bg-code-bg p-0.5 rounded-sm">&lt;p&gt; &rarr; opening tag</code></li>
+                    <li><code class="font-mono text-code-text bg-code-bg p-0.5 rounded-sm">&lt;/p&gt; &rarr; closing tag</code></li>
+                    <li><code class="font-mono text-code-text bg-code-bg p-0.5 rounded-sm">This is a paragraph &rarr; content</code></li>
+                 </ul>
+                 
+                <p class="text-[#AE615F] mt-4 font-bold">Self-closing tags:</p>
+                 <pre class="code-pre bg-code-bg text-code-text p-3 overflow-auto rounded-md whitespace-pre-wrap text-left text-sm mt-2"><code>&lt;img src="image.jpg" alt="Sample Image"&gt; 
+&lt;hr&gt;
+&lt;br&gt;    
+                 </code></pre>
+                 <hr class="border-0 h-px bg-[#8B4545] w-full max-w-full mx-auto my-4" style="background-color: #8B4545;">
+             </section>
+
+             <section id="html_3" class="custom-subsection bg-[#FFCEC2] mx-auto my-5 p-4 max-w-full rounded-md shadow-md">
+                <h3 class="text-dark-heading-text text-2xl mt-0 font-bold mb-3">HTML Headings</h3>
+                <ol class="list-decimal list-inside ml-4 text-[#AE615F] leading-relaxed">
+                    <li>Headings define the<strong> importance of text.</strong></li>
+                    <li>HTML supports<strong> 6 levels:</strong> &lt;h1&gt; to &lt;h6&gt;</li>
+                </ol>
+                <pre class="code-pre bg-code-bg text-code-text p-3 overflow-auto rounded-md whitespace-pre-wrap text-left text-sm mt-2"><code>
+&lt;h1&gt; Heading 1 &lt;/h1&gt; &lt;!--Largest--&gt;
+&lt;h2&gt; Heading 2 &lt;/h2&gt;
+&lt;h3&gt; Heading 3 &lt;/h3&gt;
+&lt;h4&gt; Heading 4 &lt;/h4&gt;
+&lt;h5&gt; Heading 5 &lt;/h5&gt;
+&lt;h6&gt; Heading 6 &lt;/h6&gt; &lt;!--Smallest--&gt;
+                </code></pre>              
+                 <hr class="border-0 h-px bg-[#8B4545] w-full max-w-full mx-auto my-4" style="background-color: #8B4545;"> 
+             </section>  
+
+             <section id="html_4" class="custom-subsection bg-[#FFCEC2] mx-auto my-5 p-4 max-w-full rounded-md shadow-md">
+                <h3 class="text-dark-heading-text text-2xl mt-0 font-bold mb-3">Paragraphs and Text Formatting</h3>
+                <ul class="list-disc list-inside ml-4 text-[#AE615F] leading-relaxed">
+                    <li>Paragraph: <pre class="inline bg-code-bg text-code-text p-0.5 rounded-sm"><code>&lt;p&gt;</code></pre></li>
+                    <li>Line Break: <pre class="inline bg-code-bg text-code-text p-0.5 rounded-sm"><code>&lt;br&gt;</code></pre></li>
+                    <li>Horizontal Line: <pre class="inline bg-code-bg text-code-text p-0.5 rounded-sm"><code>&lt;hr&gt;</code></pre></li>
+                </ul>
+
+                <p class="text-[#AE615F] mt-4 font-bold">
+                      Text Styles:
+                    <ul class="list-disc list-inside ml-4 mt-2">
+                       <li>Bold: <pre class="inline bg-code-bg text-code-text p-0.5 rounded-sm"><code>&lt;b&gt;</code></pre> or <pre class="inline bg-code-bg text-code-text p-0.5 rounded-sm"><code>&lt;strong&gt;</code></pre></li>
+                       <li>Italics: <pre class="inline bg-code-bg text-code-text p-0.5 rounded-sm"><code>&lt;i&gt;</code></pre> or <pre class="inline bg-code-bg text-code-text p-0.5 rounded-sm"><code>&lt;em&gt;</code></pre></li>
+                       <li>Underline: <pre class="inline bg-code-bg text-code-text p-0.5 rounded-sm"><code>&lt;u&gt;</code></pre></li>
+                       <li>Subscript: <pre class="inline bg-code-bg text-code-text p-0.5 rounded-sm"><code>&lt;sub&gt;</code></pre></li>
+                       <li>Superscript: <pre class="inline bg-code-bg text-code-text p-0.5 rounded-sm"><code>&lt;sup&gt;</code></pre></li>
+                    </ul>
+
+                    Example:
+<pre class="code-pre bg-code-bg text-code-text p-3 overflow-auto rounded-md whitespace-pre-wrap text-left text-sm mt-2"><code>&lt;p&gt; This is &lt;b&gt;bold&lt;/b&gt; and this is &lt;i&gt;italics&lt;/i&gt;.&lt;/p&gt;</code>
+<code>&lt;p&gt;H&lt;sub&gt;2&lt;/sub&gt;O is water &lt;/p&gt;</code></pre>
+                </p>
+                <hr class="border-0 h-px bg-[#8B4545] w-full max-w-full mx-auto my-4" style="background-color: #8B4545;">
+             </section>  
+            
+             <section id="html_5" class="custom-subsection bg-[#FFCEC2] mx-auto my-5 p-4 max-w-full rounded-md shadow-md">
+                <h3 class="text-dark-heading-text text-2xl mt-0 font-bold mb-3">Links (Hyperlinks)</h3>
+                <ul class="list-disc list-inside ml-4 text-[#AE615F] leading-relaxed">
+                    <li>Tag: <pre class="inline bg-code-bg text-code-text p-0.5 rounded-sm"><code>&lt;a&gt;</code> (anchor)</pre></li>
+                    <li>Attribute: <pre class="inline bg-code-bg text-code-text p-0.5 rounded-sm"><code>href</code></pre> &rarr; URL of link</li>
+                </ul>
+
+                <p class="text-[#AE615F] mt-4 font-bold">
+                    Other attributes:
+                    <ul class="list-disc list-inside ml-4 mt-2">
+                       <li><pre class="inline bg-code-bg text-code-text p-0.5 rounded-sm"><code>target="_blank"</code></pre> &rarr; opens in new tab</li>
+                       <li><pre class="inline bg-code-bg text-code-text p-0.5 rounded-sm"><code>title="..."</code></pre> &rarr; shows tooltip on hover</li>
+                    </ul>
+                </p>
+                <hr class="border-0 h-px bg-[#8B4545] w-full max-w-full mx-auto my-4" style="background-color: #8B4545;">
+             </section>
+
+            <section id="html_6" class="custom-subsection bg-[#FFCEC2] mx-auto my-5 p-4 max-w-full rounded-md shadow-md">
+                <h3 class="text-dark-heading-text text-2xl mt-0 font-bold mb-3">Images</h3>
+                <ul class="list-disc list-inside ml-4 text-[#AE615F] leading-relaxed">
+                    <li>Tag: <pre class="inline bg-code-bg text-code-text p-0.5 rounded-sm"><code>&lt;img&gt;</code></pre> (self-closing)</li>
+                    <li>Attributes:</li>
+                     <ul class="list-disc list-inside ml-8 mt-2">
+                        <li><pre class="inline bg-code-bg text-code-text p-0.5 rounded-sm"><code>src</code></pre> &rarr; image URL</li>
+                        <li><pre class="inline bg-code-bg text-code-text p-0.5 rounded-sm"><code>alt</code></pre> &rarr; alternate text (for accessibility)</li>
+                        <li><pre class="inline bg-code-bg text-code-text p-0.5 rounded-sm"><code>width</code></pre> and <pre class="inline bg-code-bg text-code-text p-0.5 rounded-sm"><code>height</code></pre> &rarr; size</li>
+                     </ul>
+                </ul>
+                <p class="text-[#AE615F] mt-4 font-bold">
+                       <pre class="inline bg-code-bg text-code-text p-0.5 rounded-sm"><code>&lt;img src="image.jpg" alt="My Image" width="200" height="150"&gt;</code></pre>
+                </p>
+                <hr class="border-0 h-px bg-[#8B4545] w-full max-w-full mx-auto my-4" style="background-color: #8B4545;">
+             </section> 
+
+            <section id="html_7" class="custom-subsection bg-[#FFCEC2] mx-auto my-5 p-4 max-w-full rounded-md shadow-md">
+                <h3 class="text-dark-heading-text text-2xl mt-0 font-bold mb-3">Lists</h3>
+                <ol class="list-decimal list-inside ml-4 text-[#AE615F] leading-relaxed">
+                    <li>Ordered List <pre class="inline bg-code-bg text-code-text p-0.5 rounded-sm"><code>&lt;ol&gt;</code></pre> &rarr; Numbers items automatically.</li>
+                       <p class="mt-2">
+                          <pre class="code-pre bg-code-bg text-code-text p-3 overflow-auto rounded-md whitespace-pre-wrap text-left text-sm mt-2"><code>&lt;ol&gt;
+  &lt;li&gt; Item 1&lt;/li&gt;    
+  &lt;li&gt; Item 2&lt;/li&gt;   
+&lt;/ol&gt;   
+                          </code></pre>
+                       </p>
+                    <li>Unordered List <pre class="inline bg-code-bg text-code-text p-0.5 rounded-sm"><code>&lt;ul&gt;</code></pre> &rarr; Bullets items.</li>
+                     <p class="mt-2">
+                          <pre class="code-pre bg-code-bg text-code-text p-3 overflow-auto rounded-md whitespace-pre-wrap text-left text-sm mt-2"><code>&lt;ul&gt;
+  &lt;li&gt; Apple&lt;/li&gt;    
+  &lt;li&gt; Banana&lt;/li&gt;   
+&lt;/ul&gt;   
+                          </code></pre>
+                       </p>             
+                     <li>Nested Lists</li>
+                       <p class="mt-2">
+                          <pre class="code-pre bg-code-bg text-code-text p-3 overflow-auto rounded-md whitespace-pre-wrap text-left text-sm mt-2"><code>&lt;ul&gt;
+  &lt;li&gt; Fruits&lt;/li&gt;    
+    &lt;ul&gt;
+      &lt;li&gt; Apple&lt;/li&gt;    
+      &lt;li&gt; Banana&lt;/li&gt;   
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+                          </code></pre> 
+                          <hr class="border-0 h-px bg-[#8B4545] w-full max-w-full mx-auto my-4" style="background-color: #8B4545;">
+                       </p>
+             </section> 
+
+             <section id="html_8" class="custom-subsection bg-[#FFCEC2] mx-auto my-5 p-4 max-w-full rounded-md shadow-md">
+                <h3 class="text-dark-heading-text text-2xl mt-0 font-bold mb-3">Tables</h3>
+                <ul class="list-disc list-inside ml-4 text-[#AE615F] leading-relaxed">
+                    <li>Tag: <pre class="inline bg-code-bg text-code-text p-0.5 rounded-sm"><code>&lt;table&gt;</code></pre></li>
+                    <li>Table row: <pre class="inline bg-code-bg text-code-text p-0.5 rounded-sm"><code>&lt;tr&gt;</code></pre></li>
+                    <li>Table header: <pre class="inline bg-code-bg text-code-text p-0.5 rounded-sm"><code>&lt;th&gt;</code></pre></li>
+                    <li>Table data: <pre class="inline bg-code-bg text-code-text p-0.5 rounded-sm"><code>&lt;td&gt;</code></pre></li>
+                </ul>
+
+                <p class="text-[#AE615F] mt-4 font-bold">
+                    Example:
+                    <pre class="code-pre bg-code-bg text-code-text p-3 overflow-auto rounded-md whitespace-pre-wrap text-left text-sm mt-2"><code>&lt;table class="border border-dark-heading-text w-full"&gt;
+  &lt;thead&gt;
+    &lt;tr class="bg-header-bg text-header-text"&gt; 
+      &lt;th class="p-2 border border-dark-heading-text"&gt;Name &lt;/th&gt;
+      &lt;th class="p-2 border border-dark-heading-text"&gt;Age &lt;/th&gt;                                                            
+    &lt;/tr&gt;   
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr class="bg-section-bg"&gt; 
+      &lt;td class="p-2 border border-dark-heading-text text-code-text"&gt;John &lt;/td&gt;
+      &lt;td class="p-2 border border-dark-heading-text text-code-text"&gt;25 &lt;/td&gt;                                                            
+    &lt;/tr&gt;
+    &lt;tr class="bg-section-bg"&gt; 
+      &lt;td class="p-2 border border-dark-heading-text text-code-text"&gt;Mary &lt;/td&gt;
+      &lt;td class="p-2 border border-dark-heading-text text-code-text"&gt;30 &lt;/td&gt;                                                            
+    &lt;/tr&gt; 
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre></p>
+                                                      <hr class="border-0 h-px bg-[#8B4545] w-full max-w-full mx-auto my-4" style="background-color: #8B4545;">
+             </section>
+
+             <section id="html_9" class="custom-subsection bg-[#FFCEC2] mx-auto my-5 p-4 max-w-full rounded-md shadow-md">
+                <h3 class="text-dark-heading-text text-2xl mt-0 font-bold mb-3">Forms</h3>
+                <ul class="list-disc list-inside ml-4 text-[#AE615F] leading-relaxed">
+                    <li>Tag: <pre class="inline bg-code-bg text-code-text p-0.5 rounded-sm"><code>&lt;form&gt;</code></pre></li>
+                    <li>Common input types: text, password, radio, checkbox, submit</li>
+                </ul>
+                <p class="text-[#AE615F] mt-4 font-bold">
+                    <pre class="code-pre bg-code-bg text-code-text p-3 overflow-auto rounded-md whitespace-pre-wrap text-left text-sm mt-2"><code>&lt;form action="/submit" method="post" class="space-y-4"&gt;
+  &lt;div&gt;
+    &lt;label for="name" class="block mb-1"&gt;Name:&lt;/label&gt; 
+    &lt;input type="text" id="name" name="name" class="p-2 rounded-md w-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-h2-color"&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;p class="mb-1"&gt;Gender:&lt;/p&gt;
+    &lt;div class="flex items-center space-x-4"&gt;
+      &lt;label class="inline-flex items-center"&gt;
+        &lt;input type="radio" name="gender" value="male" class="form-radio text-h2-color"&gt;
+        &lt;span class="ml-2"&gt;Male&lt;/span&gt;                                                            
+      &lt;/label&gt;
+      &lt;label class="inline-flex items-center"&gt;
+        &lt;input type="radio" name="gender" value="female" class="form-radio text-h2-color"&gt;
+        &lt;span class="ml-2"&gt;Female&lt;/span&gt;
+      &lt;/label&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;button type="submit" class="bg-button-bg text-button-text py-2 px-4 rounded-md hover:bg-button-hover transition duration-300"&gt;Submit&lt;/button&gt;
+ &lt;/form&gt;</code></pre>
+                        Form attributes:
+                         <br><br>
+                         <ul class="list-disc list-inside ml-4 mt-2">
+                            <li><pre class="inline bg-code-bg text-code-text p-0.5 rounded-sm"><code>action</code></pre> &rarr; URL where data is sent</li>
+                            <li><pre class="inline bg-code-bg text-code-text p-0.5 rounded-sm"><code>method</code></pre> &rarr; <pre class="inline bg-code-bg text-code-text p-0.5 rounded-sm"><code>GET</code></pre> or <pre class="inline bg-code-bg text-code-text p-0.5 rounded-sm"><code>POST</code></pre></li>
+                         </ul>
+                 </p>
+                 <br>
+                 <hr class="border-0 h-px bg-[#8B4545] w-full max-w-full mx-auto my-4" style="background-color: #8B4545;">
+             </section>
+
+             <section id="html_10" class="custom-subsection bg-[#FFCEC2] mx-auto my-5 p-4 max-w-full rounded-md shadow-md">
+                <h3 class="text-dark-heading-text text-2xl mt-0 font-bold mb-3">HTML Semantic Tags</h3>
+                <ul class="list-disc list-inside ml-4 text-[#AE615F] leading-relaxed">
+                    <li><pre class="inline bg-code-bg text-code-text p-0.5 rounded-sm"><code>&lt;header&gt;</code></pre> &rarr; top of page section</li>
+                    <li><pre class="inline bg-code-bg text-code-text p-0.5 rounded-sm"><code>&lt;footer&gt;</code></pre> &rarr; bottom of page section</li>
+                    <li><pre class="inline bg-code-bg text-code-text p-0.5 rounded-sm"><code>&lt;nav&gt;</code></pre> &rarr; navigation links</li>
+                    <li><pre class="inline bg-code-bg text-code-text p-0.5 rounded-sm"><code>&lt;main&gt;</code></pre> &rarr; main content</li>
+                    <li><pre class="inline bg-code-bg text-code-text p-0.5 rounded-sm"><code>&lt;section&gt;</code></pre> &rarr; section of content</li>
+                    <li><pre class="inline bg-code-bg text-code-text p-0.5 rounded-sm"><code>&lt;article&gt;</code></pre> &rarr; independent, self-contained content</li>
+                    <li><pre class="inline bg-code-bg text-code-text p-0.5 rounded-sm"><code>&lt;aside&gt;</code></pre> &rarr; sidebar content</li>
+                </ul>
+                <br>
+                <hr class="border-0 h-px bg-[#8B4545] w-full max-w-full mx-auto my-4" style="background-color: #8B4545;">
+             </section>  
+
+             <section id="html_11" class="custom-subsection bg-[#FFCEC2] mx-auto my-5 p-4 max-w-full rounded-md shadow-md">
+                <h3 class="text-dark-heading-text text-2xl mt-0 font-bold mb-3">Multimedia</h3>
+                <ol class="list-decimal list-inside ml-4 text-[#AE615F] leading-relaxed">
+                    <li>Audio</li>
+                       <p class="mt-2">
+                          <pre class="code-pre bg-code-bg text-code-text p-3 overflow-auto rounded-md whitespace-pre-wrap text-left text-sm mt-2"><code>&lt;audio controls class="w-full"&gt;
+  &lt;source src="audio.mp3" type="audio/mpeg"&gt;
+  Your browser does not support the audio element.
+&lt;/audio&gt;   
+                          </code></pre>
+                       </p>
+                    <li>Video</li>
+                     <p class="mt-2">
+                          <pre class="code-pre bg-code-bg text-code-text p-3 overflow-auto rounded-md whitespace-pre-wrap text-left text-sm mt-2"><code>&lt;video controls class="w-full h-auto rounded-md"&gt;
+  &lt;source src="video.mp4" type="video/mp4"&gt;
+  Your browser does not support the video tag.
+&lt;/video&gt;   
+                          </code></pre>
+                       </p>      
+                     <hr class="border-0 h-px bg-[#8B4545] w-full max-w-full mx-auto my-4" style="background-color: #8B4545;">       
+             </section> 
+
+
+        </section>
+
+        <section id="css" class="custom-section bg-section-bg mx-auto my-5 p-4 max-w-2xl rounded-md shadow-lg">
+            <h2 class="text-center text-h2-color pb-1 font-bold text-3xl mb-4">CSS Basics</h2>
+            <p class="text-[#AE615F] mb-3">CSS is used to style web pages. Example:</p>
+            <pre class="code-pre bg-code-bg text-code-text p-3 overflow-auto rounded-md whitespace-pre-wrap text-left text-sm mt-2"><code>h1 {
+    color: blue;
+    text-align: center;
+}</code></pre>
+            <p class="text-[#AE615F] mt-4 font-bold">Some common properties:</p>
+            <ul class="list-disc list-inside ml-4 text-[#AE615F] leading-relaxed">
+                <li>color &rarr; text color</li>
+                <li>background-color &rarr; background color</li>
+                <li>font-size &rarr; text size</li>
+                <li>margin &rarr; spacing</li>
+                <li>padding &rarr; spacing</li>
+                <li>border &rarr; border style</li>
+            </ul>
+            <hr class="border-0 h-px bg-[#8B4545] w-full max-w-full mx-auto my-4" style="background-color: #8B4545;">
+        </section>
+
+        <section id="fun" class="custom-section bg-section-bg mx-auto my-5 p-4 max-w-2xl rounded-md text-center shadow-lg">
+            <h2 class="text-h2-color pb-1 font-bold text-3xl mb-4">🎉 Fun Break 🎉</h2>
+            <p class="text-[#AE615F] mb-4">Too much studying? Feeling tired? Take a break, have some fun, and click below for an unexpected surprise that will make you smile! 🎉🚀</p>
+            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">
+                <button id="surpriseButton" class="bg-button-bg text-button-text border-none py-2 px-4 text-base rounded-md cursor-pointer transition duration-900 text-center inline-block hover:bg-button-hover mt-4 transform hover:scale-105">
+                    Surprise Me
+                </button>
+            </a>
+        </section>
+
+    </main>
+
+    <footer class="bg-header-bg text-header-text text-center p-2 mt-5">
+        <p class="text-sm">© 2025 HTML & CSS Cheat Sheet | Made with ❤️</p>
+    </footer>
+
+    <button id="back-to-top-btn" title="Go to top">⬆️</button>
+
+    <script>
+        // Back to Top Button functionality
+        const backToTopButton = document.getElementById('back-to-top-btn');
+
+        window.onscroll = function() {
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                backToTopButton.style.display = "block";
+            } else {
+                backToTopButton.style.display = "none";
+            }
+        };
+
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Dark Mode Toggle functionality
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+
+            // Store user preference in localStorage
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('darkMode', 'enabled');
+            } else {
+                localStorage.setItem('darkMode', 'disabled');
+            }
+        });
+
+        // Check for dark mode preference on page load
+        if (localStorage.getItem('darkMode') === 'enabled') {
+            body.classList.add('dark-mode');
+        }
+
+        // Fun Break Button - subtle alert for interaction
+        const surpriseButton = document.getElementById('surpriseButton');
+        surpriseButton.addEventListener('click', (event) => {
+            // Optional: Prevent the default link behavior if you want a custom JS action
+            // event.preventDefault(); 
+            console.log("Surprise button clicked! Prepare for a rickroll!");
+            // You can add more interactive elements here, e.g., a modal or a different animation
+        });
+
+    </script>
+</body>
+</html>
